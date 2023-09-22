@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+   <script>
+    async function fetchComputation(){
+        const n = document.getElementById('labseq-n').value
+        fetch('http://127.0.0.1:8080/labseq/' + n)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.res)
+                document.getElementById('present-result').textContent = data.res;
+            })
+    }
+   </script>
+   <h1>Homework</h1> 
+   <h2>Select the number to compute the labseq</h2>
+   <input type="number" id="labseq-n">
+   <button type="submit" onclick="fetchComputation()">Compute</button>
+   <p id="present-result" style="overflow: auto; white-space: normal; word-wrap: break-word;"></p>
+</body>
+</html>
